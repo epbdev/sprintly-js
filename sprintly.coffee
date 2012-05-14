@@ -40,12 +40,12 @@ _.each members,
 iterator = user.product_length
 
 # generic api_request wrapper
-api_request = (path, func) ->
+api_request = (path) ->
     base = 'https://sprint.ly/api/'
     url = base + path
     jQuery.ajax url,
         success: (data) ->
-            func(data)
+            set_items data
         error: (xhr, status, error) ->
             if window.console
                 console.log "Error occurred, status: " + status + " and error: " + error
@@ -68,7 +68,7 @@ set_items = (items) ->
 # get all of the items for each product
 _.each user.products,
     (product_id) -> 
-        api_request('products/' + product_id + '/items.json', set_items())
+        api_request('products/' + product_id + '/items.json')
 
 ###
 Types of items:

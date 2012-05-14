@@ -48,13 +48,13 @@ _.each(members, function(m) {
 
 iterator = user.product_length;
 
-api_request = function(path, func) {
+api_request = function(path) {
   var base, url;
   base = 'https://sprint.ly/api/';
   url = base + path;
   return jQuery.ajax(url, {
     success: function(data) {
-      return func(data);
+      return set_items(data);
     },
     error: function(xhr, status, error) {
       if (window.console) {
@@ -85,7 +85,7 @@ set_items = function(items) {
 };
 
 _.each(user.products, function(product_id) {
-  return api_request('products/' + product_id + '/items.json', set_items());
+  return api_request('products/' + product_id + '/items.json');
 });
 
 /*
