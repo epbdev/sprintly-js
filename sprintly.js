@@ -121,10 +121,10 @@ master_view_vars = {
   }
 };
 
-master_template = "<h3>All items assigned to you, <strong>{{user_name}}</strong>.</h3>\n{{#products}}\n    <h2><a href='https://sprint.ly/product/{{product.pk}}'>{{product.title}}</a></h2>\n    {{>sub_items}}\n{{/products}}";
+master_template = "<h3>All items assigned to you, <strong>{{user_name}}</strong>.</h3>\n{{#products}}\n    <h2><a href='https://sprint.ly/product/{{pk}}'>{{title}}</a></h2>\n    {{>sub_items}}\n{{/products}}";
 
 partials = {
-  sub_items: "{{#items}}\n    <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>\n        <div class='item_number_and_status'>&hash;{{number}}, status: {{status}}</div>\n        <div class='item_title'>{{title}}</div>\n        <div class='item_description'>{{description}}</div>\n    </div>\n{{/items}}\n{{^items}}\n    <p>No items assigned to you for this project.</p>\n{{/items}}"
+  sub_items: "{{#items}}\n    <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>\n        <div class='item_number_and_status'>\#{{number}}, status: {{status}}</div>\n        <div class='item_title'>{{title}}</div>\n        <div class='item_description'>{{description}}</div>\n    </div>\n{{/items}}\n{{^items}}\n    <p>No items assigned to you for this project.</p>\n{{/items}}"
 };
 
 make_my_items_page = function() {
