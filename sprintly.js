@@ -73,7 +73,7 @@ set_items = function(items) {
   });
   p_index = user.products.indexOf(product);
   items = _.filter(items, function(i) {
-    return !i.archived;
+    return !i.archived && i.assigned_to.id === user.pk;
   });
   if (p_index != null) {
     user.products[p_index].items = items;
