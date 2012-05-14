@@ -1,5 +1,7 @@
 ##sprintly-js##
 
+Find the bookmarklet [here](http://epbdev.github.com/sprintly-js/readme.html).
+
 This is a bookmarklet for creating a 'My Items' page on [Sprint.ly](http://sprint.ly), so you can view all of your items across all products.
 
 This project came about because, while I love most of Sprint.ly, I was getting annoyed at having to manually click through every product page to figure out what was and wasn't assigned to me. It got to the point that I started keeping another to-do list outside of Sprint.ly just to keep up!
