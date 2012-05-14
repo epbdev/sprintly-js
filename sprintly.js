@@ -11,6 +11,12 @@ username = prompt("What e-mail address do you use with Sprint.ly?", "");
 
 password = prompt("What is your Sprint.ly API Key?", "");
 
+make_error_page = function() {
+  var page;
+  page = $('#view_content');
+  return page.empty().html("<h3>You must provide both your e-mail address and API key in order for this bookmarklet to work.</h3>");
+};
+
 if ((username != null) && (password != null)) {
   base64str = Base64.encode(username + ":" + password);
   jQuery.ajaxSetup({
@@ -88,6 +94,7 @@ Types of items:
  10 - Task
 */
 
+
 master_view_vars = {
   user_name: user.first_name,
   products: user.products,
@@ -123,10 +130,4 @@ make_my_items_page = function() {
   new_content = Mustache.to_html(master_template, master_view_vars, partials);
   page = $('#view_content');
   return page.empty().html(new_content);
-};
-
-make_error_page = function() {
-  var page;
-  page = $('#view_content');
-  return page.empty().html("<h3>You must provide both your e-mail address and API key in order for this bookmarklet to work.</h3>");
 };
