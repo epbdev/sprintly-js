@@ -63,7 +63,7 @@ set_items = (items) ->
     make_my_items_page() if iterator is 0
 
 # get all of the items for each product
-_.each products,
+_.each user.products,
     (p_id) -> 
         api_request('products/' + product_id + '/items.json', set_items())
 

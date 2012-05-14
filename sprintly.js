@@ -82,7 +82,7 @@ set_items = function(items) {
   }
 };
 
-_.each(products, function(p_id) {
+_.each(user.products, function(p_id) {
   return api_request('products/' + product_id + '/items.json', set_items());
 });
 
