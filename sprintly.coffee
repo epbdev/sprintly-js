@@ -60,7 +60,7 @@ set_items = (items) ->
     p_index = user.products.indexOf product
     items = _.filter items,
         (i) ->
-            return !i.archived and i.assigned_to.id is user.pk
+            return !i.archived and i.assigned_to? and i.assigned_to.id is user.pk
     user.products[p_index].items = items if p_index?
     iterator = iterator - 1
     make_my_items_page() if iterator is 0
