@@ -64,7 +64,7 @@ set_items = (items) ->
 
 # get all of the items for each product
 _.each user.products,
-    (p_id) -> 
+    (product_id) -> 
         api_request('products/' + product_id + '/items.json', set_items())
 
 ###
@@ -87,16 +87,16 @@ master_view_vars =
                 when "story" then typeNum = "40"
             return typeNum
     
-master_template = "
+master_template = """
         <h3>All items assigned to you, <strong>{{user_name}}</strong>.</h3>
         {{#products}}
             <h2><a href='https://sprint.ly/product/{{product.pk}}'>{{product.title}}</a></h2>
             {{>sub_items}}
         {{/products}}
-"
+        """
 
 partials =
-    sub_items: "
+    sub_items: """
         {{#items}}
             <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>
                 <div class='item_number_and_status'>&hash;{{number}}, status: {{status}}</div>
@@ -107,7 +107,7 @@ partials =
         {{^items}}
             <p>No items assigned to you for this project.</p>
         {{/items}}
-    "
+        """
 
 # this will be called after all items are set
 make_my_items_page = () ->
