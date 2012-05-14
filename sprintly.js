@@ -85,7 +85,7 @@ set_items = function(items) {
 };
 
 _.each(user.products, function(p) {
-  return api_request('products/#{p.pk}/items.json');
+  return api_request("products/" + p.pk + "/items.json");
 });
 
 /*
