@@ -67,8 +67,8 @@ set_items = (items) ->
 
 # get all of the items for each product
 _.each user.products,
-    (product_id) -> 
-        api_request('products/' + product_id + '/items.json')
+    (p) -> 
+        api_request('products/#{p.pk}/items.json')
 
 ###
 Types of items:

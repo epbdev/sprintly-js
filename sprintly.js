@@ -84,8 +84,8 @@ set_items = function(items) {
   }
 };
 
-_.each(user.products, function(product_id) {
-  return api_request('products/' + product_id + '/items.json');
+_.each(user.products, function(p) {
+  return api_request('products/#{p.pk}/items.json');
 });
 
 /*
