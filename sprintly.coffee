@@ -61,7 +61,7 @@ set_items = (items) ->
     items = _.filter items,
         (i) ->
             return !i.archived
-    user.products[p_index].items = items if p_index
+    user.products[p_index].items = items if p_index?
     iterator = iterator - 1
     make_my_items_page() if iterator is 0
 

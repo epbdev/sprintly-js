@@ -75,7 +75,7 @@ set_items = function(items) {
   items = _.filter(items, function(i) {
     return !i.archived;
   });
-  if (p_index) {
+  if (p_index != null) {
     user.products[p_index].items = items;
   }
   iterator = iterator - 1;
