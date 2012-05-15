@@ -45,7 +45,7 @@ api_request = (path) ->
     url = base + path
     jQuery.ajax url,
         success: (data) ->
-            set_items data
+            set_items data if data.length > 0
         error: (xhr, status, error) ->
             if window.console
                 console.log "Error occurred, status: " + status + " and error: " + error

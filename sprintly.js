@@ -54,7 +54,9 @@ api_request = function(path) {
   url = base + path;
   return jQuery.ajax(url, {
     success: function(data) {
-      return set_items(data);
+      if (data.length > 0) {
+        return set_items(data);
+      }
     },
     error: function(xhr, status, error) {
       if (window.console) {
