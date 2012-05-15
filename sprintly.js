@@ -54,9 +54,7 @@ api_request = function(path) {
   url = base + path;
   return jQuery.ajax(url, {
     success: function(data) {
-      if (data.length > 0) {
-        return set_items(data);
-      }
+      return set_items(data);
     },
     error: function(xhr, status, error) {
       if (window.console) {
@@ -69,16 +67,18 @@ api_request = function(path) {
 
 set_items = function(items) {
   var item, p_index, product;
-  item = _.first(items);
-  product = _.find(user.products, function(p) {
-    return p.pk === item.product.id;
-  });
-  p_index = user.products.indexOf(product);
-  items = _.filter(items, function(i) {
-    return !i.archived && (i.assigned_to != null) && i.assigned_to.id === user.pk;
-  });
-  if (p_index != null) {
-    user.products[p_index].items = items;
+  if (items.length > 0) {
+    item = _.first(items);
+    product = _.find(user.products, function(p) {
+      return p.pk === item.product.id;
+    });
+    p_index = user.products.indexOf(product);
+    items = _.filter(items, function(i) {
+      return !i.archived && (i.assigned_to != null) && i.assigned_to.id === user.pk;
+    });
+    if (p_index != null) {
+      user.products[p_index].items = items;
+    }
   }
   iterator = iterator - 1;
   if (iterator === 0) {

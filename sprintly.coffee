@@ -45,7 +45,7 @@ api_request = (path) ->
     url = base + path
     jQuery.ajax url,
         success: (data) ->
-            set_items data if data.length > 0
+            set_items data
         error: (xhr, status, error) ->
             if window.console
                 console.log "Error occurred, status: " + status + " and error: " + error
@@ -53,15 +53,16 @@ api_request = (path) ->
 
 # once a collection of items is returned, assign it to the appropriate product
 set_items = (items) ->
-    item = _.first items
-    product = _.find user.products,
-        (p) ->
-            return p.pk is item.product.id
-    p_index = user.products.indexOf product
-    items = _.filter items,
-        (i) ->
-            return !i.archived and i.assigned_to? and i.assigned_to.id is user.pk
-    user.products[p_index].items = items if p_index?
+    if items.length > 0
+        item = _.first items
+        product = _.find user.products,
+            (p) ->
+                return p.pk is item.product.id
+        p_index = user.products.indexOf product
+        items = _.filter items,
+            (i) ->
+                return !i.archived and i.assigned_to? and i.assigned_to.id is user.pk
+        user.products[p_index].items = items if p_index?
     iterator = iterator - 1
     make_my_items_page() if iterator is 0
 
