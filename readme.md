@@ -14,6 +14,7 @@ Please read the unlicense.txt file for the (un)license, or visit [Unlicense](htt
 ##TODOS##
 * More comments so others can follow my logic better
 * Better formatting/making it pretty
+* Abstract into it's own object, polluting the global namespace less
 * HTML5 Local Storage so you don't have to put in your username and API key every time
 * Work it into the existing application logic more so you can interact with items, not just view them and click links
 
