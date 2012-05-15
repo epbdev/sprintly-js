@@ -76,6 +76,9 @@ set_items = function(items) {
     items = _.filter(items, function(i) {
       return !i.archived && (i.assigned_to != null) && i.assigned_to.id === user.pk;
     });
+    items = _.sortBy(items, function(i) {
+      return i.status;
+    });
     if (p_index != null) {
       user.products[p_index].items = items;
     }
@@ -123,10 +126,10 @@ master_view_vars = {
   }
 };
 
-master_template = "<h3>All items assigned to you, <strong>{{user_name}}</strong>.</h3>\n{{#products}}\n    <h2><a href='https://sprint.ly/product/{{pk}}'>{{title}}</a></h2>\n    {{>sub_items}}\n{{/products}}";
+master_template = "<h1>All items assigned to you, <strong>{{user_name}}</strong>.</h1>\n{{#products}}\n    <h2><a href='https://sprint.ly/product/{{pk}}'>{{title}}</a></h2>\n    {{>sub_items}}\n    <br>\n{{/products}}";
 
 partials = {
-  sub_items: "{{#items}}\n    <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>\n        <div class='item_number_and_status'>\#{{number}}, status: {{status}}</div>\n        <div class='item_title'>{{title}}</div>\n        <div class='item_description'>{{description}}</div>\n    </div>\n{{/items}}\n{{^items}}\n    <p>No items assigned to you for this project.</p>\n{{/items}}"
+  sub_items: "{{#items}}\n    <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>\n        <div class='item_number_and_status'><h4>\#{{number}}</h4></div>\n        <div class='item_title'><a href=\"https://sprint.ly/product/{{#product}}{{id}}{{/product}}/#!/item/{{number}}\">{{title}}</a></div>\n        <div class='item_description'>{{description}}</div>\n    </div>\n{{/items}}\n{{^items}}\n    <p>No items assigned to you for this project.</p>\n{{/items}}"
 };
 
 make_my_items_page = function() {

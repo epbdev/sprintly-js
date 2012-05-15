@@ -62,6 +62,9 @@ set_items = (items) ->
         items = _.filter items,
             (i) ->
                 return !i.archived and i.assigned_to? and i.assigned_to.id is user.pk
+        items = _.sortBy items,
+            (i) ->
+                return i.status
         user.products[p_index].items = items if p_index?
     iterator = iterator - 1
     make_my_items_page() if iterator is 0
@@ -92,10 +95,11 @@ master_view_vars =
             return typeNum
     
 master_template = """
-        <h3>All items assigned to you, <strong>{{user_name}}</strong>.</h3>
+        <h1>All items assigned to you, <strong>{{user_name}}</strong>.</h1>
         {{#products}}
             <h2><a href='https://sprint.ly/product/{{pk}}'>{{title}}</a></h2>
             {{>sub_items}}
+            <br>
         {{/products}}
         """
 
@@ -103,8 +107,8 @@ partials =
     sub_items: """
         {{#items}}
             <div id='item-{{number}}' class='my_item type-{{#type_number}}{{type}}{{/type_number}} status-{{status}}'>
-                <div class='item_number_and_status'>\#{{number}}, status: {{status}}</div>
-                <div class='item_title'>{{title}}</div>
+                <div class='item_number_and_status'><h4>\#{{number}}</h4></div>
+                <div class='item_title'><a href="https://sprint.ly/product/{{#product}}{{id}}{{/product}}/#!/item/{{number}}">{{title}}</a></div>
                 <div class='item_description'>{{description}}</div>
             </div>
         {{/items}}
