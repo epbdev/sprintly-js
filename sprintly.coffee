@@ -35,7 +35,7 @@ _.each members,
 ###
 username = user.email
 
-if !localStorage.getItem('sprintKey')?
+if localStorage.getItem('sprintKey')?
     password = localStorage.getItem('sprintKey')
 else
     password = prompt "What is your Sprint.ly API Key?", ""

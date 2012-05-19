@@ -46,7 +46,7 @@ _.each members,
 
 username = user.email;
 
-if (!(localStorage.getItem('sprintKey') != null)) {
+if (localStorage.getItem('sprintKey') != null) {
   password = localStorage.getItem('sprintKey');
 } else {
   password = prompt("What is your Sprint.ly API Key?", "");
