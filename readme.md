@@ -1,3 +1,7 @@
+# No Longer Maintained
+
+This code is no longer being maintained, as it was determined that the usefulness was no longer needed after Sprintly's HUD updates. Current version, as hosted here, is no longer functional as Sprintly moved from Mustache to Handlebars for their templating. Repo will remain here until such a time as I deem it necessary to either update it again or just trash it altogether.
+
 ##sprintly-js##
 
 Find the bookmarklet [here](http://epbdev.github.com/sprintly-js/readme.html).
